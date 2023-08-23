@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
+:root {
+    --xdark-blue: #121619;
+    --dark-blue: #4F5D75;
+    --silver: #BFC0C0;
+    --white: #fdfcfc;
+    --coral: #EF8354;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+}
+
+h1, h2, h3, p {
+    font-family: 'Ubuntu', sans-serif;
+    color: var(--white);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+
+
+.hide {
+    display: none;
+}
+
+
+/******************* HEADER ************************/
+
+header {
+    height: 250px;
+    border-bottom: 1px solid black;
+    background-color: var(--xdark-blue);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-info {
+    padding-top: 15px;
+    text-align: center;
+}
+
+.header-info h1 {
+    margin-bottom: 5px;
+}
+
+.header-info h2 {
+    color: var(--coral);
+    margin-bottom: 7px;
+}
+
+.header-info h3 {
+    font-style: italic;
+}
+
+nav {
+    margin-top: 30px;
+    text-align: center;
+}
+
+nav h3 {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav a:hover, nav a:active {
+    color: var(--coral);
+}
+
+/******************* PROJECTS ************************/
+
+#projects {
+    margin-top: 90px;
+    margin-bottom: 90px;
+    height: 625px;
+}
+
+#projects h1 {
+    width: 70vw;
+    margin: 20px auto;
+    color: var(--xdark-blue);
+    border-bottom: 1px solid var(--xdark-blue);
+}
+
+.projects-wrapper {
+    width: 100vw;
+    padding-bottom: 10px;
+    display: flex;
+
+    flex-direction: row;
+    overflow-y: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.project {
+    padding: 0 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    scroll-snap-align: start;
+    scroll-margin: 0;
+}
+
+#projects img {
+    width: 215px;
+    height: 350px;
+    animation-name: fadein;
+    animation-duration: 3s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.project-description {
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    animation-duration: 1.5s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+        opacity: 0;
+        margin-left: 50vw;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    70% {
+        opacity: 0.5
+    }
+
+    90% {
+        opacity: 0.7;
+    }
+
+    to {
+        opacity: 1;
+        margin: 0;
+        margin-top: 20px;
+    }
+}
+
+.project-description h2, .project-description p {
+    color: var(--xdark-blue);
+    margin-bottom: 5px;
+}
+
+.project-description h3 {
+    color: var(--coral);
+    margin-bottom: 10px;
+}
+
+.project-description p {
+    width: 250px;
+}
+
+.project-btns-div {
+    width: 250px;
+    margin-top: 7px;
+    margin-bottom: 25px;
+
+}
+
+.project-btn {
+    display: inline-block;
+    width: 70px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+    background-color: var(--coral);
+    color: var(--xdark-blue);
+}
+
+.project-btns-div button:nth-child(2) {
+    float: right;
+}
+
+/******************* CONTACT ************************/
+
+#contact {
+    height: 435px;
+    background-color: var(--xdark-blue);
+    color: var(--white);
+    margin: 0;
+}
+
+
+#contact h1 {
+    padding-top: 30px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    color: var(--coral);
+}
+
+form {
+    display: block;
+    width: 262px;
+    margin: 0 auto;
+}
+
+form label {
+    display: inline-block;
+}
+
+form .error {
+    float: right;
+    padding-right: 6px;
+    color: red;
+    font-size: 14px;
+}
+
+form input {
+    display: block;
+    width: 260px;
+    height: 30px;
+    outline: none;
+    border: 3px solid black;
+    border-radius: 3px;
+}
+
+form input, form textarea {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding: 0 10px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+form input:focus, form textarea:focus {
+    outline: 0;
+    border: 3px solid var(--coral);
+}
+
+form textarea {
+    width: 260px;
+    border: 3px solid black;
+}
+
+form input[type="submit"] {
+    display: block;
+    width: 70px;
+    height: 35px;
+    margin: 0 auto;
+    border: 1px solid rgb(207, 205, 205);
+    background-color: var(--silver);
+    color: var(--xdark-blue);
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.msg-response {
+    margin-top: 150px;
+    padding: 0 35px;
+    text-align: center;
+}

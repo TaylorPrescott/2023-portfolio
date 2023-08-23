@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taylor Prescott</title>
+    <link rel="stylesheet" href="./css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="./css/styles.css" type="text/css">
+    <script src="./js/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-info">
+            <h1>Taylor Prescott</h1>
+            <h2>Welcome to my portfolio.</h2>
+            <h3>Full Stack Web Developer<br>CompSci Student</h3>
+        </div>
+        <nav>
+            <h3><a href="#projects">Projects</a></h3>
+            <h3><a href="#contact">Contact</a></h3>
+        </nav>
+    </header>
+    <main>
+        <section id="projects">
+            <h1>Projects</h1>
+            <div class="projects-wrapper"> 
+            </div>
+        </section>
+        <section id="contact">
+            <h1>Contact</h1>
+            <form action="#" id="contactForm">
+                <label for="name">Name</label>
+                <p class="error" id="nameError"></p>
+                <input type="text" name="name">
+                <label for="email">Email</label>
+                <p class="error" id="emailError"></p>
+                <input type="text" name="email">
+                <label for="msg">Message</label>
+                <p class="error" id="msgError"></p>
+                <textarea name="msg" cols="30" rows="5"></textarea>
+                <input type="submit" value="Send">
+            </form>
+        </section>
+    </main>
+</body>
+</html>
