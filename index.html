@@ -22,7 +22,12 @@
     </header>
     <main>
         <section id="projects">
-            <h1>Projects</h1>
+            <h1 id="projects-heading">Projects
+                <div class="projects-nav" id="projectsNav">
+                    <button class="projects-nav-btn" id="previous"><img src="./imgs/icons/ios-arrow-50-xdark.png" alt="project nav - left arrow" ></button>
+                    <button class="projects-nav-btn" id="next"><img src="./imgs/icons/ios-arrow-50-xdark.png" alt="project nav - right arrow" ></button>
+                </div>
+            </h1>
             <div class="projects-wrapper"> 
             </div>
         </section>
@@ -31,13 +36,13 @@
             <form action="#" id="contactForm">
                 <label for="name">Name</label>
                 <p class="error" id="nameError"></p>
-                <input type="text" name="name">
+                <input type="text" name="name" id="name" autocomplete="name">
                 <label for="email">Email</label>
                 <p class="error" id="emailError"></p>
-                <input type="text" name="email">
+                <input type="text" name="email" id="email" autocomplete="email">
                 <label for="msg">Message</label>
                 <p class="error" id="msgError"></p>
-                <textarea name="msg" cols="30" rows="5"></textarea>
+                <textarea name="msg" cols="30" rows="5" id="msg"></textarea>
                 <input type="submit" value="Send">
             </form>
         </section>

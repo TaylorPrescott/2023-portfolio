@@ -89,8 +89,13 @@ nav a:hover, nav a:active {
 #projects h1 {
     width: 70vw;
     margin: 20px auto;
+    padding-left: 15px;
     color: var(--xdark-blue);
     border-bottom: 1px solid var(--xdark-blue);
+}
+
+.projects-nav {
+    display: none;
 }
 
 .projects-wrapper {
@@ -99,8 +104,9 @@ nav a:hover, nav a:active {
     display: flex;
 
     flex-direction: row;
-    overflow-y: scroll;
+    overflow-x: scroll;
     scroll-snap-type: x mandatory;
+    
 }
 
 .project {
@@ -178,24 +184,14 @@ nav a:hover, nav a:active {
 }
 
 .project-btns-div {
-    width: 250px;
-    margin-top: 7px;
-    margin-bottom: 25px;
-
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .project-btn {
-    display: inline-block;
-    width: 70px;
-    height: 30px;
-    border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     background-color: var(--coral);
-    color: var(--xdark-blue);
-}
-
-.project-btns-div button:nth-child(2) {
-    float: right;
 }
 
 /******************* CONTACT ************************/
@@ -274,4 +270,43 @@ form input[type="submit"] {
     margin-top: 150px;
     padding: 0 35px;
     text-align: center;
+}
+
+@media only screen and (min-width: 1009px) {
+
+    #projects h1 {
+        position: relative;
+        width: 715px;
+    }
+
+    #projects .projects-nav {
+        display: inline-block;
+        position: absolute;
+        right: 0;
+        bottom: -7px;
+    }
+
+    #projects .projects-nav-btn {
+        width: 70px;
+        height: 30px;
+        margin: 0 15px;
+        background-color: var(--coral);
+        border-radius: 3px;
+    }
+    
+    #projects .projects-nav-btn img {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        bottom: 8px;
+        left: 3px;
+        animation: none;
+    }
+    
+    #projects .projects-nav-btn:nth-child(1) img {
+        transform: rotate(180deg);
+        position: relative;
+        left: -1px;
+    }
+    
 }

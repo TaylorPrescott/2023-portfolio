@@ -36,8 +36,11 @@ const model = {
     }
 };
 
+
+//Set up observer in render?
 const projectsView = {
     init() {
+        this.navListenerAdded = false;
         // this.currentProject = controller.getRandomProject();
         let options = {
             threshold: 0.7
@@ -45,23 +48,44 @@ const projectsView = {
         let target = document.getElementById("projects");
         let observer = new IntersectionObserver(projectsView.render, options);
         
-       observer.observe(target);
-    }, 
+        observer.observe(target);
 
+        if (window.innerWidth > 1009) {
+            document.getElementById("projectsNav").addEventListener("click", this.navHandler);
+            this.navListenerAdded = true;
+        }
+    },
+
+    navHandler(e) {
+        const projectsWrapper = document.querySelector(".projects-wrapper");
+        if (e.target.id === "previous" || e.target.parentElement.id === "previous") {
+            projectsWrapper.scrollLeft -= projectsWrapper.offsetWidth;
+        } else if (e.target.id === "next" || e.target.parentElement.id === "next") {
+            console.log(projectsWrapper.scrollLeft);
+            projectsWrapper.scrollLeft += projectsWrapper.offsetWidth;
+        }
+    },
+
+    addNavListener() {
+        if (window.innerWidth > 1009 && !this.navListenerAdded) {
+            document.getElementById("projectsNav").addEventListener("click", this.navHandler);
+            this.navListenerAdded = true;
+        }
+    },
+
+    //Add padding to projects to center based on width of window. If wide enough to be a laptop, call addButtons() for laptop navigation
     changePadding() {
         const appendedProjects = document.querySelector(".projects-wrapper").children;
-            for (let i = 0; i < appendedProjects.length; i++) {
-                appendedProjects[i].style.padding = "0 " + ((window.innerWidth - 250) / 2) + "px";
-            }
-            console.log("changePadding...");
+        for (let i = 0; i < appendedProjects.length; i++) {
+            appendedProjects[i].style.padding = "0 " + ((window.innerWidth - 250) / 2) + "px";
+        }
+        projectsView.addNavListener();
     },
 
     render(entries, observer) {
-        console.log("rendering...");
         const projects = controller.getProjects();
 
         if (entries[0].isIntersecting) {
-            console.log("is intersecting");
             for (let i = 0; i < projects.length; i++) {
                 let projectDiv = document.createElement("div");
                 let img = document.createElement("img");
@@ -98,8 +122,8 @@ const projectsView = {
                 descriptionDiv.appendChild(h2);
                 descriptionDiv.appendChild(h3);
                 descriptionDiv.appendChild(p);
+                descriptionDiv.append(btnDiv);
                 projectDiv.append(descriptionDiv);
-                projectDiv.append(btnDiv);
 
                 document.querySelector(".projects-wrapper").append(projectDiv);
                 
@@ -127,7 +151,7 @@ const formView = {
     appendMsgResponse() {
         let p = document.createElement("p");
         p.classList.add("msg-response");
-        p.textContent = "Thanks for reaching out. You'll receive a reply soon.";
+        p.textContent = `Thanks for reaching out, ${controller.getFormData().name}. You'll receive a reply soon.`;
         document.getElementById("contact").append(p);
     },
     formValidator(formData) {
@@ -146,6 +170,13 @@ const formView = {
         //? - match preceding char 0 or 1 times, + - match preceding char 1 or more times, * matches char preceding it 0 or more times. 
         //$ - match end of string (only return match when text or string it is attached to is at end of line)
         const emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+
+        //Previous Regexes
+        const mailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const msgRegEx = /([\.\<\>"\(\)\\'\=\|])/;
+
+
 
         if (charRegEx.test(formData.name)) {
             nameErrorEl.textContent = "Invalid character used.";
@@ -183,7 +214,6 @@ const formView = {
         }
     },
     render() {
-        console.log("form render");
         this.formValidator(controller.getFormData());
     }
 };
@@ -220,6 +250,7 @@ const controller = {
 };
 
 controller.init();
+
 
 
 // console.time("perf");
